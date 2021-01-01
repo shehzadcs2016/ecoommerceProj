@@ -1,5 +1,7 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Row, Grid, Col } from "react-native-easy-grid"
+import Product from "../components/products"
+
 import {
   Text,
   View,
@@ -9,7 +11,6 @@ import {
   Image,
   SafeAreaView,
 } from "react-native"
-import Product from "./products"
 import {
   Header,
   Left,
@@ -29,16 +30,45 @@ import {
   Content,
 } from "native-base"
 const { width, height } = Dimensions.get("window")
-
+import axios from "axios"
 export default function Collection({
   navigation,
-
+  route,
   gallery2,
   gallery3,
   gallery4,
   productData,
   title,
 }) {
+  const { category_name } = route.params
+  const [categoryData, setcategoryData] = useState("")
+
+  useEffect(() => {
+    const form_data = new FormData()
+    form_data.append("category_name", category_name)
+
+    try {
+      axios
+        .post(
+          "https://project3.solutionsplayers.com/index.php/api/getProducts",
+          form_data
+        )
+        .then((res) => {
+          console.log(res.data, "response catgeory")
+          setcategoryData(res.data.products)
+          // alert("hello")
+
+          // setFormData(loginData)
+        })
+        .catch((err) => {
+          // console.log(" error =>", err)
+        })
+    } catch (error) {
+      // alert("err")
+      // console.log(error, "error catch")
+    }
+  }, [])
+  console.log(categoryData, "categoryData")
   return (
     <>
       <Col
@@ -65,7 +95,7 @@ export default function Collection({
             color: "#B98D34",
           }}
         >
-          {title}
+          {category_name}
         </Text>
       </Col>
       <Col
@@ -91,8 +121,8 @@ export default function Collection({
             showsHorizontalScrollIndicator={true}
           >
             <Text>
-              {productData && productData.length > 0
-                ? productData.map((dt, i) => {
+              {categoryData && categoryData.length > 0
+                ? categoryData.map((dt, i) => {
                     return (
                       <View key={`${dt.product_id}+_product_`}>
                         <Product
@@ -111,7 +141,7 @@ export default function Collection({
                       </View>
                     )
                   })
-                : ""}
+                : "hello"}
             </Text>
           </ScrollView>
         </Row>

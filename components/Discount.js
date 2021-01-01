@@ -5,7 +5,7 @@ const { width, height } = Dimensions.get("window")
 
 class Discount extends React.Component {
   render() {
-    const { title, userImage } = this.props
+    const { title, userImage, i } = this.props
     return (
       <Row
         style={{
@@ -19,7 +19,8 @@ class Discount extends React.Component {
           style={{
             // backgroundColor: "red",
 
-            marginLeft: width * 0.04,
+            marginLeft: i == 0 ? width * 0.01 : width * 0.1,
+
             alignItems: "center",
           }}
         >

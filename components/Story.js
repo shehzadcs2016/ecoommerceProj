@@ -5,9 +5,18 @@ const { width, height } = Dimensions.get("window")
 
 class Discount extends React.Component {
   render() {
-    const { title, userImage } = this.props
+    const { title, userImage, i, gallery1 } = this.props
+    let Image_Http_URL = {
+      uri: `https://project3.solutionsplayers.com/uploads/category/${userImage}`,
+    }
     return (
       <Row
+        onPress={() =>
+          this.props.navigation.navigate("SearchByCategory", {
+            category_name: title,
+          })
+        }
+        key={i}
         style={{
           // width: width * 0.95,
           // backgroundColor: "red",
@@ -46,7 +55,7 @@ class Discount extends React.Component {
 
                 // marginTop: 3,
               }}
-              source={userImage}
+              source={userImage ? Image_Http_URL : gallery1}
             />
           </Col>
           <Col style={{ marginTop: -height * 0.01 }}>
@@ -56,7 +65,7 @@ class Discount extends React.Component {
                 // fontWeight: "900",
                 // marginTop: 3,
                 fontFamily: "OpenSans",
-                color: "#960019",
+                color: "#B98D34",
                 // backgroundColor: "#F2DAED",
               }}
             >

@@ -2,44 +2,24 @@ import {
   createDrawerNavigator,
   DrawerContentScrollView,
 } from "@react-navigation/drawer"
-import React from "react"
-import HomeScreen from "../screens/Home"
-// import CategoryScreen from "../screens/Portfolio"
-// import OfferScreen from "../screens/Offer"
+import React, { useState } from "react"
 
-import drawerSignup from "../assets/drawerSignup.png"
-import drawerSignin from "../assets/drawerSignin.png"
-
-import { HomeStackScreen } from "../stackScreens"
 import {
   Text,
   View,
   StyleSheet,
   Dimensions,
   ScrollView,
+  Picker,
   Image,
   TouchableOpacity,
 } from "react-native"
-import {
-  Header,
-  Left,
-  Body,
-  Right,
-  Button,
-  Title,
-  Input,
-  Item,
-  Card,
-  CardItem,
-  List,
-  ListItem,
-  Footer,
-  Container,
-  Content,
-} from "native-base"
+import { Button, Container, Content } from "native-base"
+import signout from "../assets/signout.png"
 
 const { width, height } = Dimensions.get("window")
 import { Row, Grid, Col } from "react-native-easy-grid"
+import Icons from "react-native-vector-icons/Feather"
 
 import FilterScreen from "./FilterScreen"
 import MyAccount from "./MyAccount"
@@ -59,6 +39,8 @@ export default function SettingScreen({ navigation }) {
 }
 
 function CustomDrawerContent(props) {
+  const [selected, setSelected] = useState(true)
+
   return (
     <DrawerContentScrollView {...props}>
       <Container>
@@ -181,8 +163,8 @@ function CustomDrawerContent(props) {
                 // marginLeft: width * 0.07,
                 // alignSelf: "center",
                 // width: "50%",
-                // borderBottomWidth: 1,
-                // paddingBottom: 7,
+                borderBottomWidth: 1,
+                paddingBottom: 7,
                 // backgroundColor: "#F2DAED",
                 // opacity: 0.7,
                 color: "#696969",
@@ -190,6 +172,131 @@ function CustomDrawerContent(props) {
             >
               On Sale
             </Text>
+          </Col>
+          <Row
+            onPress={() => setSelected(!selected)}
+            style={{
+              width: "80%",
+              alignSelf: "center",
+              marginTop: height * 0.02,
+            }}
+          >
+            <Col style={{ width: "90%" }}>
+              <Text
+                style={{
+                  fontSize: height * 0.025,
+                  // marginTop: height * 0.02,
+                  // marginLeft: width * 0.03,
+
+                  fontFamily: "OpenSans",
+
+                  color: "#696969",
+                }}
+              >
+                Color
+              </Text>
+            </Col>
+            <Col style={{ width: "10%" }}>
+              <Icons name="chevron-down" size={25} />
+            </Col>
+          </Row>
+          <Text
+            style={{
+              width: "80%",
+              alignSelf: "center",
+              // marginTop: height * 0.02,
+            }}
+          >
+            {selected == true ? (
+              <Col
+                style={{
+                  width: "80%",
+                  alignSelf: "center",
+                  // marginTop: height * 0.02,
+                }}
+              >
+                <Text
+                  style={{
+                    fontSize: height * 0.02,
+                    marginTop: height * 0.01,
+                    marginLeft: width * 0.035,
+
+                    fontFamily: "OpenSans",
+
+                    color: "#696969",
+                  }}
+                >
+                  Blue
+                </Text>
+                <Text
+                  style={{
+                    fontSize: height * 0.02,
+                    // marginTop: height * 0.005,
+                    marginLeft: width * 0.035,
+
+                    fontFamily: "OpenSans",
+
+                    color: "#696969",
+                  }}
+                >
+                  Grey
+                </Text>
+                <Text
+                  style={{
+                    fontSize: height * 0.02,
+                    // marginTop: height * 0.01,
+                    marginLeft: width * 0.035,
+
+                    fontFamily: "OpenSans",
+
+                    color: "#696969",
+                  }}
+                >
+                  Red
+                </Text>
+                <Text
+                  style={{
+                    fontSize: height * 0.02,
+                    // marginTop: height * 0.01,
+                    marginLeft: width * 0.035,
+
+                    fontFamily: "OpenSans",
+
+                    color: "#696969",
+                  }}
+                >
+                  Yellow
+                </Text>
+              </Col>
+            ) : (
+              ""
+            )}
+          </Text>
+          <Col
+            onPress={() => props.navigation.navigate("Checkout")}
+            style={{
+              width: "90%",
+              alignSelf: "center",
+              marginTop: height * 0.14,
+              // backgroundColor: "red",
+            }}
+          >
+            <Button
+              style={styles.SignOut}
+              onPress={() => props.navigation.navigate("Checkout")}
+            >
+              <Image
+                source={signout}
+                style={{
+                  height: height * 0.053,
+                  width: width * 0.31,
+                  // alignSelf: "center",
+                  borderRadius: 5,
+                  marginLeft: width * 0.005,
+                }}
+              />
+              <Text style={styles.SignOutText}>APPLY</Text>
+            </Button>
           </Col>
         </Content>
       </Container>
@@ -212,10 +319,10 @@ const styles = StyleSheet.create({
     borderColor: "#fff",
   },
   SignOut: {
-    width: "34%",
+    width: "48%",
     height: 39,
     // padding: "50%",
-    // marginLeft: "20%",
+    marginLeft: "0%",
     // borderWidth: 1,
     // borderRadius: 10,
     backgroundColor: "transparent",
@@ -224,11 +331,11 @@ const styles = StyleSheet.create({
     // alignContent: "center",
   },
   SignUp: {
-    width: "60%",
+    width: "40%",
     height: 44,
     // padding: "50%",
     marginTop: "44%",
-    marginLeft: "20%",
+    // marginLeft: "22%",
     // borderWidth: 1,
     borderRadius: 10,
     alignSelf: "center",
@@ -264,7 +371,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "#EDD1EC",
     // marginLeft: "10%",
     // padding: 12,
-    left: "11%",
+    left: "30%",
     position: "absolute",
     fontSize: width * 0.05,
   },

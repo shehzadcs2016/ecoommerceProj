@@ -43,7 +43,7 @@ export default function SingleProduct({ navigation }) {
   const [selectedValue, setSelectedValue] = useState("java")
   return (
     <View style={{ flex: 1, backgroundColor: "#E0E8F1" }}>
-      <Carosoul />
+      <Carosoul navigation={navigation} />
       <View style={{ flex: 3 }}>
         <ScrollView>
           <Col

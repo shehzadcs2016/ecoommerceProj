@@ -85,9 +85,8 @@ export default class CarouselExample extends Component {
           </Carousel>
 
           <Icon1
-            //   onPress={() => navigation.goBack()}
+            onPress={() => this.props.navigation.goBack()}
             style={styles.Icon1}
-            onPress={() => navigation.openDrawer()}
             name="arrow-left-circle"
             size={25}
           />

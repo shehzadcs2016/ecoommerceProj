@@ -14,6 +14,10 @@ import SearchScreen from "../screens/FilterScreen"
 import Settings from "../screens/Settings"
 import Thanks from "../screens/Thanks"
 import SingleProduct from "../screens/SingleProduct"
+import Address from "../screens/Address"
+import ForgotPassword from "../screens/ForgotPassword"
+import ChangePassword from "../screens/ChangePassword"
+import SearchByCategory from "../screens/SearchByCategory"
 
 import { createStackNavigator } from "@react-navigation/stack"
 
@@ -22,34 +26,31 @@ export function HomeStackScreen() {
 
   return (
     <HomeStack.Navigator headerMode={"none"}>
-      <HomeStack.Screen name="Welcome" component={Welcome} />
-
       <HomeStack.Screen name="MyTabs" component={MyTabs} />
 
-      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Login" component={Login} />
+
+      <HomeStack.Screen name="Welcome" component={Welcome} />
+
+      {/* <HomeStack.Screen name="Home" component={Home} /> */}
 
       <HomeStack.Screen name="Register" component={Register} />
       <HomeStack.Screen name="SingleProduct" component={SingleProduct} />
 
-      <HomeStack.Screen name="Login" component={Login} />
       <HomeStack.Screen name="Thanks" component={Thanks} />
 
       <HomeStack.Screen name="Cart" component={Cart} />
       <HomeStack.Screen name="Category" component={Category} />
       <HomeStack.Screen name="Checkout" component={Checkout} />
       <HomeStack.Screen name="Earnings" component={Earnings} />
-      <HomeStack.Screen name="MyAccount" component={MyAccount} />
-      <HomeStack.Screen name="SearchScreen" component={SearchScreen} />
-      <HomeStack.Screen name="Settings" component={Settings} />
-    </HomeStack.Navigator>
-  )
-}
-export function MainStackScreen() {
-  const mainStack = createStackNavigator()
+      <HomeStack.Screen name="Address" component={Address} />
+      <HomeStack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <HomeStack.Screen name="ChangePassword" component={ChangePassword} />
+      <HomeStack.Screen name="SearchByCategory" component={SearchByCategory} />
 
-  return (
-    <mainStack.Navigator headerMode={"none"}>
-      <mainStack.Screen name="Home" component={Home} />
-    </mainStack.Navigator>
+      {/* <HomeStack.Screen name="MyAccount" component={MyAccount} />
+      <HomeStack.Screen name="SearchScreen" component={SearchScreen} />
+      <HomeStack.Screen name="Settings" component={Settings} /> */}
+    </HomeStack.Navigator>
   )
 }

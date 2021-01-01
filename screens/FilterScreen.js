@@ -37,7 +37,8 @@ import logout from "../assets/logout.png"
 import Path2 from "../assets/Path2.png"
 import tvbox from "../assets/tvbox.png"
 import gallery5 from "../assets/darkImage.png"
-export default function SearchScreen() {
+import EarningCard from "../components/EarningCard"
+export default function SearchScreen({ navigation }) {
   return (
     <View style={{ flex: 1, alignContent: "center" }}>
       <Container style={{ backgroundColor: "#E0E8F1" }}>
@@ -56,13 +57,103 @@ export default function SearchScreen() {
           <Text style={styles.headerSignOutText}>Earnings</Text>
           <Text style={styles.headerSignOutsubText}>70 Items</Text>
           <Icons
-            size={25}
+            size={20}
+            style={styles.rightSearch}
+            name="search"
+            color={"#fff"}
+          />
+          <Icons
+            size={20}
             style={styles.rightHeart}
             name="heart"
             color={"#fff"}
           />
+          <Icon1
+            size={20}
+            style={styles.rightbasket}
+            name="shopping-basket"
+            color={"#fff"}
+          />
         </Header>
-        <Content></Content>
+        <Content>
+          <Row>
+            <EarningCard
+              navigation={navigation}
+              Image={Image}
+              gallery5={gallery5}
+              width={width}
+              height={height}
+              Col={Col}
+              Row={Row}
+              Icons={Icons}
+            />
+            <EarningCard
+              navigation={navigation}
+              Image={Image}
+              gallery5={gallery5}
+              width={width}
+              height={height}
+              Col={Col}
+              Row={Row}
+              Icons={Icons}
+            />
+          </Row>
+          <Row style={{ marginTop: 3 }}>
+            <EarningCard
+              navigation={navigation}
+              Image={Image}
+              gallery5={gallery5}
+              width={width}
+              height={height}
+              Col={Col}
+              Row={Row}
+              Icons={Icons}
+            />
+            <EarningCard
+              navigation={navigation}
+              Image={Image}
+              gallery5={gallery5}
+              width={width}
+              height={height}
+              Col={Col}
+              Row={Row}
+              Icons={Icons}
+            />
+          </Row>
+        </Content>
+        {/* <Footer style={styles.Homeheader}>
+          <Image
+            source={signout}
+            style={{
+              height: height * 0.076,
+              width: width,
+              // alignSelf: "center",
+              // borderRadius: 5,
+              // marginLeft: width * 0.01,
+            }}
+          />
+          <Icons size={30} style={styles.leftChevron} name="chevron-left" />
+          <Text style={styles.headerSignOutText}>Earnings</Text>
+          <Text style={styles.headerSignOutsubText}>70 Items</Text>
+          <Icons
+            size={20}
+            style={styles.rightSearch}
+            name="search"
+            color={"#fff"}
+          />
+          <Icons
+            size={20}
+            style={styles.rightHeart}
+            name="heart"
+            color={"#fff"}
+          />
+          <Icon1
+            size={20}
+            style={styles.rightbasket}
+            name="shopping-basket"
+            color={"#fff"}
+          />
+        </Footer> */}
       </Container>
     </View>
   )
@@ -76,12 +167,24 @@ const styles = StyleSheet.create({
     // borderWidth: 5,
     // borderColor: "#fff",
   },
+  rightbasket: {
+    top: "35%",
+    left: "90%",
+    // fontFamily: "MontserratLight",
+    position: "absolute",
+  },
+  rightSearch: {
+    top: "35%",
+    left: "70%",
+    // fontFamily: "MontserratLight",
+    position: "absolute",
+  },
   rightHeart: {
     // height: height * 0.045,
     // width: width * 0.2,
     // alignSelf: "center",
     // borderRadius: 5,
-    top: "30%",
+    top: "35%",
     left: "80%",
     // fontFamily: "MontserratLight",
     position: "absolute",

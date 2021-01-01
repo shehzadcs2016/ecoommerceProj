@@ -401,10 +401,10 @@ export default function SettingScreen({ navigation }) {
             </Row>
           </Col>
           <Row style={{ width: "90%", alignSelf: "center", marginTop: 15 }}>
-            <Col onPress={() => navigation.navigate("MyTabs")}>
+            <Col onPress={() => navigation.navigate("Address")}>
               <Button
                 style={styles.SignOut}
-                onPress={() => navigation.navigate("MyTabs")}
+                onPress={() => navigation.navigate("Address")}
               >
                 <Image
                   source={signout}
